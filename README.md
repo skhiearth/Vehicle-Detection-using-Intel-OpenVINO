@@ -7,6 +7,10 @@ The pre-trained model (vehicle-detection-adas-0002) is extracted from the Intel 
 *Sample Usage:*
 `python app.py -m ./Model/vehicle-detection-adas-0002.xml -ct 0.6 -c BLUE -i ./Input/driving_berlin.mp4`
 
+<a href="https://github.com/skhiearth/skhiearth.github.io/blob/master/images/vehicle_detection.gif?raw=true" target="_blank">
+<img src="https://github.com/skhiearth/skhiearth.github.io/blob/master/images/vehicle_detection.gif?raw=true" 
+alt="Vehicle Detection" width="450" height="300" border="10" /></a>
+
 Here, **-m** specifies the path to the model file, **-ct** specifies the confidence threshold, **-c** is the desired color for the boxes drawn on the output video and **-i** specifies the path to the input file.
 
 This project has been inspired from the Udacity Intel Edge AI Foundation Course.
