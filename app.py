@@ -5,6 +5,7 @@ from inference import Network
 INPUT_STREAM = "test_video.mp4"
 CPU_EXTENSION = "/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so"
 
+
 def get_args():
     parser = argparse.ArgumentParser("Run inference on an input video")
     
@@ -29,6 +30,7 @@ def get_args():
     args = parser.parse_args()
 
     return args
+
 
 def infer_on_video(args):
     args.c = convert_color(args.c)
@@ -91,9 +93,6 @@ def infer_on_video(args):
 
     
 def draw_boxes(frame, result, args, width, height):
-    '''
-    Draw bounding boxes onto the frame.
-    '''
     for box in result[0][0]: # Output shape is 1x1x100x7
         conf = box[2]
         if conf >= args.ct:
@@ -106,10 +105,6 @@ def draw_boxes(frame, result, args, width, height):
 
 
 def convert_color(color_string):
-    '''
-    Get the BGR value of the desired bounding box color.
-    Defaults to Blue if an invalid color is given.
-    '''
     colors = {"BLUE": (255,0,0), "GREEN": (0,255,0), "RED": (0,0,255)}
     out_color = colors.get(color_string)
     if out_color:
