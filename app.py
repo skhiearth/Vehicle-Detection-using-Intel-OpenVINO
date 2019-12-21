@@ -3,7 +3,7 @@ import cv2
 from inference import Network
 
 INPUT_STREAM = "test_video.mp4"
-CPU_EXTENSION = "/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so"
+CPU_EXTENSION = "/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension.dylib"
 
 
 def get_args():
@@ -23,7 +23,7 @@ def get_args():
 
     # -- Create the arguments
     required.add_argument("-m", help=m_desc, required=True)
-    optional.add_argument("-i", help=i_desc, default="test_video.mp4")
+    optional.add_argument("-i", help=i_desc, default=INPUT_STREAM)
     optional.add_argument("-d", help=d_desc, default='CPU')
     optional.add_argument("-c", help=c_desc, default='BLUE')
     optional.add_argument("-ct", help=ct_desc, default=0.5)
@@ -54,7 +54,7 @@ def infer_on_video(args):
     # Create a video writer for the output video
     out = cv2.VideoWriter('out.mp4', 
                           cv2.VideoWriter_fourcc('M','J','P','G'), 
-                          30, (width,height))
+                          60, (width,height))
     
     # Process frames until the video ends, or process is exited
     while cap.isOpened():
